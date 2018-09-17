@@ -3,7 +3,7 @@
 set -e
 
 modgit init
-modgit -b homolog add vindi https://github.com/vindi/vindi-magento.git
+modgit update vindi
 
 
 exec "$@"
