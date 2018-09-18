@@ -41,12 +41,12 @@ services:
          - HUB_HOST=selenium
          - HUB_PORT=4444
     magento1db:
-        image: vindi/mysql-magento1
+        image: vindi/mysql-magento1-ci
         container_name: magento1_db
         ports:
          - "3306"
     magento1web:
-        image: vindi/apache-magento1
+        image: vindi/apache-magento1-ci
         container_name: magento1_web
         depends_on:
          - magento1db
