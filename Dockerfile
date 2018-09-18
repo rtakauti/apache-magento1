@@ -109,9 +109,11 @@ RUN chmod 777 /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
 RUN rm magento1.tar.gz
 
+
 RUN curl https://raw.githubusercontent.com/jreinke/modgit/master/modgit > modgit
 RUN chmod +x modgit
 RUN mv modgit /usr/local/bin
+
 
 RUN cd /var/www/html
 RUN modgit init
