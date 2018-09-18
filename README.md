@@ -63,6 +63,33 @@ networks:
 
 ```
 
+Criação dos certificados para self signed SSL
+
+```
+openssl req \
+        -newkey rsa:2048 \
+        -nodes \
+        -keyout apache.key \
+        -subj "/C=BR/ST=SP/L=Sao Paulo/CN=vindi.local/OU=IT/O=Vindi SA/emailAddress=comunidade@vindi.com.br" \
+        -out apache.csr
+```
+
+```
+openssl req \
+        -key apache.key \
+        -x509 \
+        -nodes \
+        -new \
+        -out apache.crt \
+        -subj "/C=BR/ST=SP/L=Sao Paulo/CN=vindi.local/OU=IT/O=Vindi SA/emailAddress=comunidade@vindi.com.br" \
+        -reqexts SAN \
+        -extensions SAN \
+        -config <(cat /usr/lib/ssl/openssl.cnf \
+            <(printf "[SAN]\nsubjectAltName=DNS:vindi.local")) \
+        -sha256 \
+        -days 36500
+```
+
 ## Rodar os testes
 
 ```
