@@ -2,7 +2,7 @@
 
 set -e
 
-modgit init
+cd /var/www/html/
 modgit update vindi
 
 

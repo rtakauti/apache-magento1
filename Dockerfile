@@ -105,6 +105,7 @@ RUN chmod 777 /var/www/html/magento1.tar.gz
 RUN chown www-data:www-data /var/www/html/magento1.tar.gz
 RUN cd /var/www/html
 RUN tar -xf magento1.tar.gz
+RUN chmod 777 /var/www/html/
 RUN chown -R www-data:www-data /var/www/html
 RUN rm magento1.tar.gz
 
@@ -112,6 +113,7 @@ RUN curl https://raw.githubusercontent.com/jreinke/modgit/master/modgit > modgit
 RUN chmod +x modgit
 RUN mv modgit /usr/local/bin
 
+RUN cd /var/www/html
 RUN modgit init
 RUN modgit -b homolog add vindi https://github.com/vindi/vindi-magento.git
 
